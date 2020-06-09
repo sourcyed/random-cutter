@@ -1,4 +1,4 @@
-# Simple Random Cutter
+# Random Cutter
 
 ## Description
 
