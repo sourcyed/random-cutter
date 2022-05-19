@@ -26,7 +26,9 @@ class YED_Random_Cutter(QWidget):
         self.input_save_path = QPushButton("Select Save Location")
         self.input_save_path.clicked.connect(self.get_save_path)
         self.input_vid_length = QDoubleSpinBox()
+        self.input_vid_length.setMaximum(999999.99)
         self.input_cut_length = QDoubleSpinBox()
+        self.input_cut_length.setMaximum(999999.99)
         self.input_cut_length.valueChanged.connect(self.check_cut_length_value)
         self.input_progress = QProgressBar()
         self.input_progress.setMaximum(101)
@@ -68,7 +70,7 @@ class YED_Random_Cutter(QWidget):
             self.input_cut_length.setValue(self.input_vid_length.value())
 
     def get_vid_path(self):
-        self.vid_path = QFileDialog.getOpenFileName(self,"Select Video File",os.getenv("HOME"),"Video files (*.mp4 *.avi *.wmv *.mov)")[0]
+        self.vid_path = QFileDialog.getOpenFileName(self,"Select Video File",os.getenv("HOME"),"Video files (*.mp4 *.avi *.wmv *.mov *.mkv)")[0]
         if self.vid_path != "":
             self.input_vid_path.setText(self.vid_path.split("/")[-1])
 

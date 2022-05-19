@@ -87,4 +87,4 @@ class Random_Cutter():
         else:
             duration = my_clip.duration
         my_clip = my_clip.set_audio(music.set_duration(duration))
-        my_clip.write_videofile(self.save_path, fps=self.fps)
+        my_clip.write_videofile(self.save_path, fps=self.fps, verbose=False, logger=None)
