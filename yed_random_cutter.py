@@ -1,5 +1,6 @@
 import sys
 import os
+import threading
 import cv2
 from PyQt5.QtWidgets import QWidget,QApplication,QMainWindow,QLabel,QPushButton,QVBoxLayout,QHBoxLayout,QFileDialog,QProgressBar,QDoubleSpinBox,QMessageBox
 from PyQt5.QtGui import QImage,QPixmap,QPalette,QColor
@@ -32,7 +33,7 @@ class YED_Random_Cutter(QWidget):
         self.input_cut_length.setMaximum(86400)
         self.input_cut_length.valueChanged.connect(self.check_cut_length_value)
         self.input_progress = QProgressBar()
-        self.input_progress.setMaximum(101)
+        self.input_progress.setMaximum(100)
         self.input_cut = QPushButton("Cut")
         self.input_cut.clicked.connect(self.cut)
 
@@ -89,7 +90,8 @@ class YED_Random_Cutter(QWidget):
         if self.vid_path != "" and self.mus_path != "" and self.save_path != "" and self.input_vid_length.value() > 0 and self.input_cut_length.value() > 0:
             if self.save_path.split(".")[-1].lower() != "mp4":
                 self.save_path = self.save_path + ".mp4"
-            self.cutter = Random_Cutter(self.vid_path, self.mus_path, self.save_path, self.input_vid_length.value(), self.input_cut_length.value())
+            self.cutter = threading.Thread(target=Random_Cutter, args=(self.vid_path, self.mus_path, self.save_path, self.input_vid_length.value(), self.input_cut_length.value()))
+            self.cutter.start()
 
     def open_video_box(self):
         buttonReply = QMessageBox.question(self, "Operation Complete", "Do you want to open the cutted video?", QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
