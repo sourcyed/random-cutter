@@ -92,6 +92,10 @@ class YED_Random_Cutter(QWidget):
                 self.save_path = self.save_path + ".mp4"
             self.cutter = threading.Thread(target=Random_Cutter, args=(self.vid_path, self.mus_path, self.save_path, self.input_vid_length.value(), self.input_cut_length.value()))
             self.cutter.start()
+            self.input_cut.setEnabled(False)
+            self.input_progress.setValue(0)
+            self.input_progress.resetFormat()
+            
 
     def open_video_box(self):
         buttonReply = QMessageBox.question(self, "Operation Complete", "Do you want to open the cutted video?", QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
@@ -118,12 +122,15 @@ class Random_Cutter(Random_Cutter):
         main_window.window.input_frame1.setPixmap(pix)
 
     def add_music(self):
+        main_window.window.input_progress.setFormat("Adding music...")
         super().add_music()
         
     def run_operations(self):
         super().run_operations()
-        main_window.window.input_progress.setValue(main_window.window.input_progress.maximum())
+        # main_window.window.input_progress.setValue(main_window.window.input_progress.maximum())
+        main_window.window.input_progress.setFormat("Operation completed!")
         main_window.window.open_video_box()
+        main_window.window.input_cut.setEnabled(True)
 
 app = QApplication(sys.argv)
 
