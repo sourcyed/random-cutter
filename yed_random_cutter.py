@@ -27,6 +27,7 @@ class YED_Random_Cutter(QWidget):
         self.input_save_path.clicked.connect(self.get_save_path)
         self.input_vid_length = QDoubleSpinBox()
         self.input_vid_length.setMaximum(86400)
+        self.input_vid_length.valueChanged.connect(self.check_cut_length_value)
         self.input_cut_length = QDoubleSpinBox()
         self.input_cut_length.setMaximum(86400)
         self.input_cut_length.valueChanged.connect(self.check_cut_length_value)

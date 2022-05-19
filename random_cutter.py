@@ -1,6 +1,7 @@
 import cv2
 from moviepy.video.io.VideoFileClip import VideoFileClip
 from moviepy.audio.io.AudioFileClip import AudioFileClip
+from moviepy.audio.fx.all import audio_loop
 from sys import stdout
 from os import remove
 from random import randint
@@ -82,9 +83,9 @@ class Random_Cutter():
     def add_music(self): #Creates a new video file from the temporary output file and adds the selected audio the the background.
         my_clip = VideoFileClip("".join(self.save_path.split(".")[:-1]) + "_tmp.avi")
         music = AudioFileClip(self.mus_path)
-        if my_clip.duration > music.duration:
-            duration = music.duration
-        else:
-            duration = my_clip.duration
-        my_clip = my_clip.set_audio(music.set_duration(duration))
+        my_clip = my_clip.set_audio(audio_loop(music, duration=my_clip.duration))
+        stdout.write("\r%s" % "Adding music...")
+        stdout.flush()
         my_clip.write_videofile(self.save_path, fps=self.fps, verbose=False, logger=None)
+        stdout.write("\r%s" % "Operation completed!")
+        stdout.flush()
