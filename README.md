@@ -2,7 +2,7 @@
 
 ## Description
 
- A simple program that cuts small clips from a video and creates a new video from those clips and a background music.
+ Random Cutter cuts small clips from a video and creates a new video from a remix of those clips and adds a given background music.
  
 ## Getting Started
 
