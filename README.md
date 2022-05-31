@@ -2,13 +2,13 @@
 
 ## Description
 
- A simple program that cuts small clips from a video and creates a new video from those clips and a background music.
+ Random Cutter cuts small clips from a video and creates a new video from a remix of those clips and adds a given background music.
  
 ## Getting Started
 
 ### How to use the program
 
-  You can download and run the program from the "Releases" tab of this repository.
+  You can download and run the program from the "Releases" tab of this repository or you can execute the "yed_random_cutter.py" file with Python3.
 
 * First you choose the source video (the video which the clips will be taken from).
 * Then you choose the background music (this will be added to the background of your new video).
