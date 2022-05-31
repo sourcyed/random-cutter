@@ -5,9 +5,9 @@ import cv2
 from PyQt5.QtWidgets import QWidget,QApplication,QMainWindow,QLabel,QPushButton,QVBoxLayout,QHBoxLayout,QFileDialog,QProgressBar,QDoubleSpinBox,QMessageBox
 from PyQt5.QtGui import QImage,QPixmap,QPalette,QColor
 from PyQt5.QtCore import Qt
-from random_cutter import Random_Cutter
+from random_cutter import RandomCutter
 
-class YED_Random_Cutter(QWidget):
+class YEDRandomCutter(QWidget):
     def __init__(self):
         super().__init__()
         self.init_ui()
@@ -105,12 +105,12 @@ class YED_Random_Cutter(QWidget):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.window = YED_Random_Cutter()
+        self.window = YEDRandomCutter()
         self.setCentralWidget(self.window)
         self.setWindowTitle("YED Random Cutter")
         self.show()
 
-class Random_Cutter(Random_Cutter):
+class Random_Cutter(RandomCutter):
     def display_progress(self):
         super().display_progress()
         main_window.window.input_progress.setValue(self.progress)
