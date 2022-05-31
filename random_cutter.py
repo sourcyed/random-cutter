@@ -1,7 +1,7 @@
 import cv2
 from moviepy.video.io.VideoFileClip import VideoFileClip
 from moviepy.audio.io.AudioFileClip import AudioFileClip
-from moviepy.audio.fx.all import audio_loop
+from moviepy.audio.fx.audio_loop import audio_loop
 from sys import stdout
 from os import remove
 from random import randint
