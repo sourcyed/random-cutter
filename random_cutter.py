@@ -7,7 +7,7 @@ from os import remove
 from random import randint
 from math import ceil
 
-class RandomCutter():
+class RandomCutter:
     def __init__(self,vid_path, mus_path, save_path, vid_length, cut_length): #Sets the class variables.
         self.vid_path = vid_path
         self.mus_path = mus_path

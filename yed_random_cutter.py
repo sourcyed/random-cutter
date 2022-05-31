@@ -90,7 +90,7 @@ class YEDRandomCutter(QWidget):
         if self.vid_path != "" and self.mus_path != "" and self.save_path != "" and self.input_vid_length.value() > 0 and self.input_cut_length.value() > 0:
             if self.save_path.split(".")[-1].lower() != "mp4":
                 self.save_path = self.save_path + ".mp4"
-            self.cutter = threading.Thread(target=Random_Cutter, args=(self.vid_path, self.mus_path, self.save_path, self.input_vid_length.value(), self.input_cut_length.value()))
+            self.cutter = threading.Thread(target=RandomCutter, args=(self.vid_path, self.mus_path, self.save_path, self.input_vid_length.value(), self.input_cut_length.value()))
             self.cutter.start()
             self.input_cut.setEnabled(False)
             self.input_progress.setValue(0)
@@ -110,7 +110,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("YED Random Cutter")
         self.show()
 
-class Random_Cutter(RandomCutter):
+class RandomCutter(RandomCutter):
     def display_progress(self):
         super().display_progress()
         main_window.window.input_progress.setValue(self.progress)
